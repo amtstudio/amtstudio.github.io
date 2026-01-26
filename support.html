@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>技术指导 - AMT工作室</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Microsoft YaHei", sans-serif;
+    }
+    /* 导航 */
+    .header {
+      background: #222;
+      padding: 12px 15px;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      color: #fff;
+      font-size: 20px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .logo span {
+      color: #0066cc;
+    }
+    .menu-btn {
+      color: #fff;
+      font-size: 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #222;
+      padding: 10px 15px;
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .nav-links.show {
+      display: flex;
+    }
+    .nav-links a {
+      color: #eee;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 8px 0;
+      border-bottom: 1px solid #333;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: #0066cc;
+    }
+    body {
+      background: #f5f7fa;
+      color: #333;
+      line-height: 1.8;
+      padding: 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+    h1 {
+      font-size: 32px;
+      margin-bottom: 20px;
+      color: #222;
+      text-align: center;
+    }
+    h2 {
+      font-size: 24px;
+      margin: 40px 0 20px;
+      color: #0066cc;
+      border-left: 4px solid #0066cc;
+      padding-left: 12px;
+    }
+    h3 {
+      font-size: 18px;
+      margin: 20px 0 10px;
+      color: #222;
+    }
+    p {
+      margin-bottom: 15px;
+      text-align: justify;
+    }
+    ul, ol {
+      margin-left: 20px;
+      margin-bottom: 15px;
+    }
+    li {
+      margin-bottom: 8px;
+    }
+    .card {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    .card h3 {
+      margin-top: 0;
+    }
+    .contact-box {
+      background: #f0f7ff;
+      padding: 25px;
+      border-radius: 8px;
+      margin-top: 30px;
+    }
+    .contact-box p {
+      margin-bottom: 10px;
+    }
+    a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .faq summary {
+      font-weight: bold;
+      cursor: pointer;
+      padding: 10px;
+      background: #f0f7ff;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+    .faq details {
+      margin-bottom: 15px;
+    }
+    .faq details p {
+      padding: 10px;
+      background: #f8f9fa;
+      border-radius: 0 0 6px 6px;
+    }
+    @media (min-width: 768px) {
+      .menu-btn { display: none; }
+      .nav-links {
+        position: static;
+        display: flex;
+        flex-direction: row;
+        background: transparent;
+        padding: 0;
+        gap: 25px;
+      }
+      .nav-links a { border-bottom: none; padding: 0; }
+      .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+      .page-header h1 { font-size: 36px; }
+      .page-header p { font-size: 16px; }
+      .tabs { margin: 40px auto; max-width: 1200px; }
+      .tab { font-size: 16px; padding: 10px 25px; }
+      .container { padding: 0 20px 60px; }
+      .work-grid { gap: 30px; }
+      .work-title { font-size: 20px; }
+      .work-meta { font-size: 14px; }
+      .work-desc { font-size: 15px; }
+      .footer { padding: 50px 0 20px; }
+      .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+        padding: 0 20px;
+      }
+      .footer-logo { font-size: 22px; }
+      .copyright { font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="nav-container">
+      <a href="index.html" class="logo">AMT<span>工作室</span></a>
+      <button class="menu-btn" id="menuBtn">☰</button>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">首页</a>
+        <a href="works.html">作品中心</a>
+        <a href="about.html">关于我们</a>
+        <a href="download.html">下载中心</a>
+        <a href="support.html" class="active">技术指导</a>
+        <a href="legal.html">法律协议</a>
+      </div>
+    </div>
+  </header>
+  <div class="container">
+    <h1>AMT工作室 · 技术指导</h1>
+    <p style="text-align:center; color:#666;">为您提供模拟飞行插件、Minecraft模组/DLC的安装、使用与问题排查服务</p>
+
+    <h2>一、快速开始（安装指南）</h2>
+
+    <div class="card" id="aerofly-install">
+      <h3> 模拟飞行插件安装</h3>
+      <ol>
+        <li>下载对应插件文件（.zip/.tme），解压到本地文件夹</li>
+        <li>将插件文件夹复制到模拟飞行插件装载目录的 <strong>(如files)</strong> 文件夹</li>
+        <li>启动模拟飞行，在设置/插件菜单中启用对应插件</li>
+        <li>按插件说明配置快捷键/参数，完成初始化</li>
+      </ol>
+      <p><strong>注意</strong>：请确保游戏版本与插件版本匹配，避免冲突。</p>
+    </div>
+
+    <div class="card" id="mc-install">
+      <h3> Minecraft Java模组安装</h3>
+      <ol>
+        <li>安装对应版本的 <strong>Forge/Fabric</strong> 加载器</li>
+        <li>将模组文件（.jar）放入 <strong>.minecraft/mods</strong> 文件夹</li>
+        <li>资源包放入 <strong>.minecraft/resourcepacks</strong> 文件夹并在游戏内启用</li>
+        <li>启动游戏，检查模组是否加载成功（主菜单/模组列表查看）</li>
+      </ol>
+      <p><strong>提示</strong>：多人服务器需服务器端同步安装对应模组。</p>
+    </div>
+
+    <div class="card" id="mcb-install">
+      <h3> Minecraft: Bedrock Edition模组安装</h3>
+      <ol>
+        <li>安装对应版本的Minecraft: Bedrock Edition</li>
+        <li>打开手机里的“<strong>文件管理器</strong>” </li>
+        <li>找到<strong>装有下载好模组</strong> 的文件夹</li>
+        <li>单击<strong>模组文件</strong>（例如.addon文件）</li>
+        <li>选择<strong>应用</strong>打开方式</li>
+        <li>找到并点击<strong>Minecraft</strong>以自动导入</li>
+      </ol>
+      <p><strong>提示</strong>：多人服务器需服务器端另外安装。</p>
+    </div>
+    <h2>二、常见问题（FAQ）</h2>
+    <div class="faq">
+      <details>
+        <summary>Q1：插件/模组安装后游戏闪退/无法启动？</summary>
+        <p>A：① 检查游戏版本与插件/模组版本是否一致；② 排查与其他插件/模组的冲突（逐个禁用测试）；③ 确认加载器（Forge/Fabric）版本正确；④ 清理游戏缓存后重试。</p>
+      </details>
+      <details>
+        <summary>Q2：付费插件购买失败/授权异常？</summary>
+        <p>A：① 查看账户是否已扣款；② 检查网络连接，确保能访问授权服务器；③ 确认自己的银行卡或支付宝、微信未被封禁、冻结；④ 联系客服提供订单号与设备信息重置授权。</p>
+      </details>
+      <details>
+        <summary>Q3：Minecraft 模组加载成功但功能不生效？</summary>
+        <p>A：① 检查是否安装了必要的前置模组（如 API、库文件）；② 确认配置文件未被错误修改；③ 单人/多人模式切换测试；④ 重新下载最新版模组覆盖安装。</p>
+      </details>
+      <details>
+        <summary>Q4：模拟飞行插件功能异常/无效果？</summary>
+        <p>A：① 检查插件是否在游戏内启用；② 重新配置快捷键，避免与其他插件冲突；③ 更新游戏与插件到最新版本；④更新游戏到插件适合的版本。</p>
+      </details>
+      <details>
+        <summary>Q5：如何更新插件/模组到最新版本？</summary>
+        <p>A：① 前往AMT工作室官网/官方群下载最新版；② 备份旧版配置文件（如需保留设置）；③ 删除旧版文件，替换为新版；④ 启动游戏验证更新是否成功。</p>
+      </details>
+    </div>
+
+    <h2>三、使用规范与限制</h2>
+    <ul>
+      <li>仅限个人合法使用，禁止二次分发、售卖、破解或反向工程</li>
+      <li>禁止修改插件/模组核心代码、去除版权信息或绕过授权验证</li>
+      <li>免费版可正常使用基础功能，付费版解锁全部高级功能与技术支持</li>
+      <li>因违规使用（如安装盗版、修改核心文件）导致的问题，不予支持</li>
+    </ul>
+
+    <h2>四、联系支持</h2>
+    <div class="contact-box">
+      <p>如以上方案无法解决您的问题，请通过以下方式联系我们，<strong>请提供：问题描述、游戏版本、插件/模组版本、错误截图/日志</strong>，以便快速定位问题。</p>
+      <p> 支持邮箱：<a href="mailto:luorenyishishazi@outlook.com">luorenyishishazi@outlook.com</a></p>
+      <p> 官方QQ群（优先回复）：<a href="https://qun.qq.com/universal-share/share?ac=1&authKey=jMaV83knl32o2CPOTMMizrapvyOKtfmaXOX0TN4MqLeVFiW9d7lTM0QEvoozmmBV&busi_data=eyJncm91cENvZGUiOiIxMDMyNDk5Mjc5IiwidG9rZW4iOiJYR1UzSTNxOE50ekNkQ0h6S3NiQkV0dDk3UkFMdmljbmQ5ZUFROFZiTGc5ejdGcS9mRWpCeFpQcU91NGpHV2diIiwidWluIjoiMzk1NjI5MTU1MiJ9&data=urDeTOSubXuIMrjC960jss0sS9fKZNNEs-m26TnIRDAvvipjXqRWrtPQvrm-ZrRY70eoknGUuTz3a7YY2Zu7QA&svctype=4&tempid=h5_group_info">1032499279</a>（进群请备注：问题+游戏名）</p>
+      <p><strong>服务时间</strong>：工作日 10:00-22:00，节假日顺延</p>
+    </div>
+  </div>
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  </script>
+</body>
+</html>
