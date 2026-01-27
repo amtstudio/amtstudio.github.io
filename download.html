@@ -567,10 +567,15 @@
   // 这里可以加你同意后的逻辑，比如继续下一步
 }
     function rejectAndExit() {
-      overlay.style.display = 'none';
-      if (confirm('你选择了不同意并退出，是否确认离开？')) {
-        window.close();
-      }
+  overlay.style.display = 'none';
+  if (confirm('您需要同意协议才能使用下载服务。确定要离开吗？')) {
+    // 优先尝试关闭窗口
+    if (window.history.length > 1) {
+      window.history.back(); // 返回上一页
+    } else {
+      window.location.href = 'about:blank'; // 无历史记录时跳转空白页
+    }
+  }
     }
 
     closeBtn.addEventListener('click', rejectAndExit);
