@@ -231,6 +231,11 @@
     .tab-content.active {
       display: block;
     }
+    /* 特殊："全部"状态要同时显示两个平台 */
+    #all.active ~ #aerofly,
+    #all.active ~ #minecraft {
+      display: block;
+    }
     .download-list {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -511,21 +516,69 @@
   </footer>
 
   <script>
-    const tabs = document.querySelectorAll('.tab');
-    const tabContents = document.querySelectorAll('.tab-content');
-    tabs.forEach(tab => {
+    // 获取所有tab按钮
+    const platformTabs = document.querySelectorAll('.platform-tabs .tab');
+    const typeTabs = document.querySelectorAll('.type-tab');
+    const allTabContents = document.querySelectorAll('.tab-content');
+
+    // 平台切换逻辑
+    platformTabs.forEach(tab => {
       tab.addEventListener('click', () => {
-        tabs.forEach(t => t.classList.remove('active'));
-        tabContents.forEach(c => c.classList.remove('active'));
+        // 1. 更新平台按钮状态
+        platformTabs.forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
-        const target = tab.getAttribute('data-tab');
-        document.getElementById(target).classList.add('active');
+    
+        const targetPlatform = tab.dataset.tab;
+    
+        // 2. 处理"全部"平台的特殊情况
+        if (targetPlatform === 'all') {
+          // 显示所有平台
+          allTabContents.forEach(content => {
+            content.classList.add('active');
+          });
+          // 重置所有类型筛选为"全部"
+          typeTabs.forEach(t => {
+            if (t.dataset.type === 'all') t.classList.add('active');
+            else t.classList.remove('active');
+          });
+          // 显示所有卡片
+          document.querySelectorAll('.card').forEach(card => {
+            card.style.display = 'block';
+          });
+        } else {
+          // 单个平台切换
+          allTabContents.forEach(content => {
+            content.classList.remove('active');
+            if (content.id === targetPlatform) {
+              content.classList.add('active');
+            }
+          });
+        }
       });
     });
-    const menuBtn = document.getElementById('menuBtn');
-    const navLinks = document.getElementById('navLinks');
-    menuBtn.addEventListener('click', () => {
-      navLinks.classList.toggle('show');
+
+    // 类型筛选逻辑（在每个平台内部）
+    typeTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const type = tab.dataset.type;
+        const platformContainer = tab.closest('.tab-content');
+    
+        // 更新类型按钮状态
+    platformContainer.querySelectorAll('.type-tab').forEach(t => {
+          t.classList.remove('active');
+        });
+        tab.classList.add('active');
+    
+        // 筛选卡片
+        const cards = platformContainer.querySelectorAll('.card');
+        cards.forEach(card => {
+          if (type === 'all' || card.dataset.type === type) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
     });
   </script>
 </body>
