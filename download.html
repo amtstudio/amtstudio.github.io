@@ -231,9 +231,8 @@
     .tab-content.active {
       display: block;
     }
-    /* 特殊："全部"状态要同时显示两个平台 */
-    #all.active ~ #aerofly,
-    #all.active ~ #minecraft {
+    /* 特殊：当"全部"按钮被点击时，同时显示两个平台 */
+    #aerofly.active, #minecraft.active {
       display: block;
     }
     .download-list {
