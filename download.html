@@ -75,7 +75,8 @@
       background: #ccc;
       color: #333;
     }
-    @media (min-width: 768px) {
+    @media (max-width: 768px) {
+      .download-item { width: 100%;margin-bottom:20px; }
       .menu-btn { display: none; }
       .nav-links {
         position: static;
@@ -116,12 +117,14 @@
       padding: 0;
       box-sizing: border-box;
       font-family: "Microsoft YaHei", sans-serif;
+      box-sizing: border-box;
     }
     body {
       background: #f5f7fa;
       color: #333;
       line-height: 1.6;
       overflow-x: hidden;
+      font-size: 14px;
     }
     .header {
       background: #222;
