@@ -210,30 +210,22 @@
     .tabs {
       display: flex;
       gap: 15px;
-      margin-bottom: 30px;
+      margin: 30px 20px;
       flex-wrap: wrap;
+      justify-content: center;
     }
     .tab {
       padding: 8px 20px;
       background: #fff;
       border-radius: 30px;
       cursor: pointer;
-      font-weight: bold;
       transition: all 0.3s;
+      font-weight: bold;
+      font-size: 14px;
     }
     .tab.active {
       background: #0066cc;
       color: #fff;
-    }
-    .tab-content {
-      display: none;
-    }
-    .tab-content.active {
-      display: block;
-    }
-    /* 特殊：当"全部"按钮被点击时，同时显示两个平台 */
-    #aerofly.active, #minecraft.active {
-      display: block;
     }
     .download-list {
       display: grid;
@@ -414,12 +406,13 @@
     <p>Aerofly FS Global DLC 插件 & Minecraft 模组 官方下载</p>
   </div>
 
-  <div class="container">
     <div class="tabs">
-      <div class="tab active" data-tab="aerofly;minecraft">全部</div>
-      <div class="tab" data-tab="aerofly">Aerofly FS Global</div>
-      <div class="tab" data-tab="minecraft">Minecraft</div>
-    </div>
+    <div class="tab active" data-target="all">全部作品</div>
+    <div class="tab" data-target="aerofly">Aerofly FS Global</div>
+    <div class="tab" data-target="minecraft">Minecraft</div>
+  </div>
+
+  <div class="container">
 
     <!-- Aerofly FS Global 下载区 -->
     <div class="tab-content active" id="aerofly">
@@ -515,69 +508,26 @@
   </footer>
 
   <script>
-    // 获取所有tab按钮
-    const platformTabs = document.querySelectorAll('.tabs .tab');
-    const typeTabs = document.querySelectorAll('.type-tab');
-    const allTabContents = document.querySelectorAll('.tab-content');
-
-    // 平台切换逻辑
-    platformTabs.forEach(tab => {
+    const tabs = document.querySelectorAll('.tab');
+    const workItems = document.querySelectorAll('.work-item');
+    tabs.forEach(tab => {
       tab.addEventListener('click', () => {
-        // 1. 更新平台按钮状态
-        platformTabs.forEach(t => t.classList.remove('active'));
+        tabs.forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
-    
-        const targetPlatform = tab.dataset.tab;
-    
-        // 2. 处理"全部"平台的特殊情况
-        if (targetPlatform === 'all') {
-          // 显示所有平台
-          allTabContents.forEach(content => {
-            content.classList.add('active');
-          });
-          // 重置所有类型筛选为"全部"
-          typeTabs.forEach(t => {
-            if (t.dataset.type === 'all') t.classList.add('active');
-            else t.classList.remove('active');
-          });
-          // 显示所有卡片
-          document.querySelectorAll('.card').forEach(card => {
-            card.style.display = 'block';
-          });
-        } else {
-          // 单个平台切换
-          allTabContents.forEach(content => {
-            content.classList.remove('active');
-            if (content.id === targetPlatform) {
-              content.classList.add('active');
-            }
-          });
-        }
-      });
-    });
-
-    // 类型筛选逻辑（在每个平台内部）
-    typeTabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        const type = tab.dataset.type;
-        const platformContainer = tab.closest('.tab-content');
-    
-        // 更新类型按钮状态
-    platformContainer.querySelectorAll('.type-tab').forEach(t => {
-          t.classList.remove('active');
-        });
-        tab.classList.add('active');
-    
-        // 筛选卡片
-        const cards = platformContainer.querySelectorAll('.card');
-        cards.forEach(card => {
-          if (type === 'all' || card.dataset.type === type) {
-            card.style.display = 'block';
+        const target = tab.dataset.target;
+        workItems.forEach(item => {
+          if (target === 'all' || item.dataset.category === target) {
+            item.style.display = 'block';
           } else {
-            card.style.display = 'none';
+            item.style.display = 'none';
           }
         });
       });
+    });
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
     });
   </script>
 </body>
