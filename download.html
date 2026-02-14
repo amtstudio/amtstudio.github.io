@@ -497,7 +497,7 @@
         <h3 class="footer-title">联系我们</h3>
         <ul class="footer-links">
           <li>电子邮件: luorenyishishazi@outlook.com</li>
-          <li>QQ群：<a href="https://qun.qq.com/universal-share/share?ac=1&authKey=XdTQr4oubsy9nhYBs0yRX8bWnRDscBa0VG6Fg%2BvDmupdcR%2B5%2Bix0JsRGtxJa4RxH&busi_data=eyJncm91cENvZGUiOiIzMzkxNzg4MDkiLCJ0b2tlbiI6IjVmbDBDd0J5WkdFQ0hDaU0vUGtYWUhuYUtBcHU1Q2lOb2VCakZYWFdOaWxJRml6dFdwU3dYMlRlSUx4M2VkU04iLCJ1aW4iOiIzOTU2MjkxNTUyIn0%3D&data=nCZFx5hDB4lL4-d9lp_xwjISCFZGs11AaMH_04k3VSw7AdQ76byRGkXiU059IClXQko7cgPvxR0eGbRzaAoZlQ&svctype=4&tempid=h5_group_info"339178809</a></li>
+          <li>QQ群：<a href="https://qun.qq.com/universal-share/share?ac=1&authKey=XdTQr4oubsy9nhYBs0yRX8bWnRDscBa0VG6Fg%2BvDmupdcR%2B5%2Bix0JsRGtxJa4RxH&busi_data=eyJncm91cENvZGUiOiIzMzkxNzg4MDkiLCJ0b2tlbiI6IjVmbDBDd0J5WkdFQ0hDaU0vUGtYWUhuYUtBcHU1Q2lOb2VCakZYWFdOaWxJRml6dFdwU3dYMlRlSUx4M2VkU04iLCJ1aW4iOiIzOTU2MjkxNTUyIn0%3D&data=nCZFx5hDB4lL4-d9lp_xwjISCFZGs11AaMH_04k3VSw7AdQ76byRGkXiU059IClXQko7cgPvxR0eGbRzaAoZlQ&svctype=4&tempid=h5_group_info">339178809</a></li>
         </ul>
       </div>
     </div>
@@ -567,16 +567,14 @@
     });
     function acceptAndHideModal() {
   overlay.style.display = 'none';
-  // 这里可以加你同意后的逻辑，比如继续下一步
 }
     function rejectAndExit() {
   overlay.style.display = 'none';
   if (confirm('您需要同意协议才能使用下载服务。确定要离开吗？')) {
-    // 优先尝试关闭窗口
     if (window.history.length > 1) {
-      window.history.back(); // 返回上一页
+      window.history.back();
     } else {
-      window.location.href = 'about:blank'; // 无历史记录时跳转空白页
+      window.location.href = 'about:blank';
     }
   }
     }
