@@ -17,7 +17,7 @@
       line-height: 1.6;
       overflow-x: hidden;
     }
-    /* 导航（同首页） */
+    /* 导航（完全对齐首页样式） */
     .header {
       background: #222;
       padding: 12px 15px;
@@ -116,7 +116,7 @@
       background: #0066cc;
       color: #fff;
     }
-    /* 作品列表 */
+    /* 作品列表（完全保留你原本的样式，只修复图片适配） */
     .container {
       max-width: 1200px;
       margin: 0 auto;
@@ -146,6 +146,12 @@
       justify-content: center;
       font-size: 40px;
       color: #0066cc;
+      overflow: hidden;
+    }
+    .work-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
     .work-info {
       padding: 20px;
@@ -206,7 +212,7 @@
     .work-btn:hover {
       background: #0052aa;
     }
-    /* 底部（同首页） */
+    /* 底部（完全对齐首页样式） */
     .footer {
       background: #222;
       color: #aaa;
@@ -248,8 +254,9 @@
       padding-top: 15px;
       border-top: 1px solid #333;
       font-size: 12px;
+      color: #fff;
     }
-    /* 电脑端适配 */
+    /* 电脑端适配（完全对齐首页） */
     @media (min-width: 768px) {
       .menu-btn { display: none; }
       .nav-links {
@@ -315,7 +322,9 @@
     <div class="work-grid" id="all">
       <!-- Aerofly 作品 -->
       <div class="work-item" data-category="aerofly">
-        <div class="work-img"><img src="assets/images/amt_all_airport.jpg"></div>
+        <div class="work-img">
+          <img src="assets/images/amt_all_airport.jpg" alt="全球机场插件">
+        </div>
         <div class="work-info">
           <h3 class="work-title">Aerofly FS Global - 全球机场插件</h3>
           <div class="work-meta">版本：V4.0 | 更新：2026-01-18</div>
@@ -328,9 +337,12 @@
           <a href="download.html#aerofly-1" class="work-btn">前往下载</a>
         </div>
       </div>
+
       <!-- Minecraft 作品 -->
       <div class="work-item" data-category="minecraft">
-        <div class="work-img"><img src="assets/images/mtc1291.png"></div>
+        <div class="work-img">
+          <img src="assets/images/mtc1291.png" alt="MTC宇通客车">
+        </div>
         <div class="work-info">
           <h3 class="work-title">MTC宇通客车（开往星辰火车客站）</h3>
           <div class="work-meta">版本：V1.0 | 适配：Minecraft: Bedrock Edition 1.19.50+，mtc2.0+</div>
@@ -343,6 +355,9 @@
           <a href="download.html#mc-1" class="work-btn">前往下载</a>
         </div>
       </div>
+    </div>
+  </div>
+
   <footer class="footer">
     <div class="footer-container">
       <div>
@@ -370,8 +385,9 @@
       <div>
         <h3 class="footer-title">联系我们</h3>
         <ul class="footer-links">
-          <li> luorenyishishazi@outlook.com</li>
-          <li> QQ群：339178809</li>
+          <li>luorenyishishazi@outlook.com</li>
+          <li>QQ群：339178809</li>
+          <li>amtstudio.github.io</li>
         </ul>
       </div>
     </div>
@@ -381,6 +397,7 @@
   </footer>
 
   <script>
+    // 作品分类切换
     const tabs = document.querySelectorAll('.tab');
     const workItems = document.querySelectorAll('.work-item');
     tabs.forEach(tab => {
@@ -397,6 +414,8 @@
         });
       });
     });
+
+    // 移动端菜单
     const menuBtn = document.getElementById('menuBtn');
     const navLinks = document.getElementById('navLinks');
     menuBtn.addEventListener('click', () => {
