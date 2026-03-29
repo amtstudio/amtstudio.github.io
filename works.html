@@ -147,11 +147,6 @@
       font-size: 40px;
       color: #0066cc;
     }
-    .work-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
     .work-info {
       padding: 20px;
     }
@@ -159,17 +154,32 @@
       font-size: 18px;
       margin-bottom: 8px;
       color: #222;
+      text-shadow: 
+     -1px -1px 0 #FFFFFF,
+      1px -1px 0 #FFFFFF,
+     -1px  1px 0 #FFFFFF,
+      1px  1px 0 #FFFFFF;
     }
     .work-meta {
       font-size: 13px;
       color: #999;
       margin-bottom: 12px;
+      text-shadow: 
+     -1px -1px 0 #000,
+      1px -1px 0 #000,
+     -1px  1px 0 #000,
+      1px  1px 0 #000;
     }
     .work-desc {
       font-size: 14px;
-      color: #666;
+      color: #FFFFFF;
       margin-bottom: 15px;
       line-height: 1.6;
+      text-shadow: 
+     -1px -1px 0 #000,
+      1px -1px 0 #000,
+     -1px  1px 0 #000,
+      1px  1px 0 #000;
     }
     .work-tags {
       display: flex;
@@ -305,9 +315,7 @@
     <div class="work-grid" id="all">
       <!-- Aerofly 作品 -->
       <div class="work-item" data-category="aerofly">
-        <div class="work-img">
-          <img src="assets/images/amt_all_airport.jpg" alt="全球机场插件">
-        </div>
+        <div class="work-img"><img src="assets/images/amt_all_airport.jpg"></div>
         <div class="work-info">
           <h3 class="work-title">Aerofly FS Global - 全球机场插件</h3>
           <div class="work-meta">版本：V4.0 | 更新：2026-01-18</div>
@@ -320,12 +328,9 @@
           <a href="download.html#aerofly-1" class="work-btn">前往下载</a>
         </div>
       </div>
-
       <!-- Minecraft 作品 -->
       <div class="work-item" data-category="minecraft">
-        <div class="work-img">
-          <img src="assets/images/mtc1291.png" alt="MTC宇通客车">
-        </div>
+        <div class="work-img"><img src="assets/images/mtc1291.png"></div>
         <div class="work-info">
           <h3 class="work-title">MTC宇通客车（开往星辰火车客站）</h3>
           <div class="work-meta">版本：V1.0 | 适配：Minecraft: Bedrock Edition 1.19.50+，mtc2.0+</div>
@@ -338,9 +343,6 @@
           <a href="download.html#mc-1" class="work-btn">前往下载</a>
         </div>
       </div>
-    </div>
-  </div>
-
   <footer class="footer">
     <div class="footer-container">
       <div>
@@ -368,8 +370,8 @@
       <div>
         <h3 class="footer-title">联系我们</h3>
         <ul class="footer-links">
-          <li>luorenyishishazi@outlook.com</li>
-          <li>QQ群：339178809</li>
+          <li> luorenyishishazi@outlook.com</li>
+          <li> QQ群：339178809</li>
         </ul>
       </div>
     </div>
@@ -379,7 +381,6 @@
   </footer>
 
   <script>
-    // 作品分类切换
     const tabs = document.querySelectorAll('.tab');
     const workItems = document.querySelectorAll('.work-item');
     tabs.forEach(tab => {
@@ -396,8 +397,6 @@
         });
       });
     });
-
-    // 移动端菜单
     const menuBtn = document.getElementById('menuBtn');
     const navLinks = document.getElementById('navLinks');
     menuBtn.addEventListener('click', () => {
