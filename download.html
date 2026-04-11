@@ -110,10 +110,10 @@
     .download-list {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 50px;
+      gap: 20px;
       padding: 16px;
       box-sizing: border-box;
-      max-width: 100%;
+      width: 100%;
     }
     .download-card {
       background: #fff;
@@ -310,10 +310,9 @@
     @media (min-width: 768px) {
       .download-list {
         grid-template-columns: repeat(3, 1fr);
-     max-width: 30%;
-     margin: 0 auto;
-   }
-    }
+        max-width: 1200px;
+        margin: 0 auto;
+        gap: 30px;
       }
       .menu-btn { display: none; }
       .nav-links {
@@ -422,9 +421,7 @@
         <a href="support.html" class="card-btn secondary">安装指南</a>
       </div>
     </div>
-
-<div class="container">
-  <div class="download-list">
+    
     <h1>其他内容</h1>
     <div class="download-card" data-category="other">
       <div class="card-img"><img src="assets/images/ultimate3dmodeling.png"></div>
